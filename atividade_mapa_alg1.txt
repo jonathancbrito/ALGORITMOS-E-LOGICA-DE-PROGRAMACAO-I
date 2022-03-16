@@ -1,0 +1,63 @@
+programa{
+   funcao inicio() {
+        cadeia carteira[] = { "CDB", "Acoes", "Fundos Imobiliarios", "Stocks", "Reits"}
+        inteiro percentual[5] 
+        inteiro percentualAtual[5] /
+        real valoresAplicados[5] 
+        inteiro somaPercentual = 0
+        inteiro somaInvestimento = 0
+        inteiro diferenca[5] 
+        inteiro maiorNum = 0
+        cadeia disparidade = ""
+        
+
+        enquanto(somaPercentual != 100){
+            para(inteiro pos = 0; pos < 5; pos++){
+                escreva("Informe a porcentagem para investir em " + carteira[pos] + ": ") 
+                leia(percentual[pos])
+                somaPercentual = somaPercentual + percentual[pos]
+            }
+            
+            se(somaPercentual != 100){
+                escreva("A soma percentual é diferente de 100%, insira novamente. \n")
+                somaPercentual = 0
+            }
+            
+        }
+        
+         para(inteiro pos = 0; pos < 5; pos++){
+            escreva("Informe o valor investido atualmente em  " + carteira[pos] + ": R$ ") 
+            leia(valoresAplicados[pos])
+            somaInvestimento = somaInvestimento + valoresAplicados[pos]
+        }
+        
+        para (inteiro pos = 0; pos < 5; pos++){
+            percentualAtual[pos] = (valoresAplicados[pos] * 100) / somaInvestimento
+            
+        }
+        
+        
+        para(inteiro pos = 0; pos < 5; pos++){
+            escreva("\nValor pretendido em " + carteira[pos] + " : " + percentual[pos])
+            escreva("\nO valor já investido em " + carteira[pos] + " é de: " + percentualAtual[pos])
+            
+            se(percentual[pos] > percentualAtual[pos]){
+                diferenca[pos] = percentual[pos] - percentualAtual[pos]
+            }
+            senao {
+                diferenca[pos] = percentualAtual[pos] - percentual[pos]
+            }
+            
+            se(diferenca[pos] > maiorNum) {
+                maiorNum = diferenca[pos]
+                disparidade = carteira[pos]
+            }
+            
+        }
+       
+        escreva("\nA maior diferença está no ativo " + disparidade + " com " + maiorNum + " % de diferença")
+ 
+        
+   }
+   
+}
